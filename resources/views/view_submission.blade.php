@@ -12,6 +12,11 @@
                     <th>Service Requested</th>
                     <th>Provider Contact</th>
                     <th>User Contact</th>
+                    <th>Service Options</th>
+                    <th>Ref Number</th>
+                    <th>City</th>
+                    <th>House Number</th>
+                    <th>Description</th>
                     <!-- Add more headers as needed -->
                 </tr>
             </thead>
@@ -22,7 +27,12 @@
                         <td>{{ $submission->company_name }}</td>
                         <td>{{ $submission->services_provided }}</td>
                         <td>{{ $submission->service_provider_contact }}</td>
-                        <td>{{ $submission->user_contact }}</td>
+                        <td>{{ $submission-service_options }}</td>
+                        <td>{{ $submission-service_options }}</td>
+                        <td>{{ $submission-ref_number }}</td>
+                        <td>{{ $submission-city }}</td>
+                        <td>{{ $submission-house_number }}</td>
+                        <td>{{ $submission-description }}</td>
                         <!-- Add more columns as needed -->
                     </tr>
                 @endforeach
