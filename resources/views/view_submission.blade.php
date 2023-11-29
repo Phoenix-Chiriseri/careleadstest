@@ -7,7 +7,7 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>User Name</th>
+                    <th>Client Name</th>
                     <th>Company Name</th>
                     <th>Service Requested</th>
                     <th>Provider Contact</th>

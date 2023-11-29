@@ -23,21 +23,19 @@
 
                             <div class="form-group">
                                 <label for="username">{{ __('Username') }}</label>
-                                <input type="text" name="username" id="username" class="form-control">
+                                <input type="text" name="username" id="username" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="email">{{ __('Email') }}</label>
-                                <input type="email" name="email" id="email" class="form-control">
+                                <input type="email" name="email" id="email" class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="service_provider">{{ __('Service Provider') }}</label>
-                                <input type="text" name="service_provider" id="service_provider" class="form-control">
+                                <input type="text" name="service_provider" id="service_provider" class="form-control" required>
                             </div>
-
                             <!-- Add other form fields here based on your table structure -->
-
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Submit') }}
