@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../HomeCareLeads"
+		},
+		{
+			"path": "../../../../../job_board_app"
+		},
+		{
+			"path": "../../../../ElectronPos"
+		}
+	],
+	"settings": {}
+}

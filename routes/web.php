@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequestedServicesController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,10 +14,14 @@ use App\Http\Controllers\RequestedServicesController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    // Return all the users to the blade file
+    $users = User::all();
+    return view("welcome")->with("users", $users);
 });
+
+Route::get('/request-client/{clientId}', [App\Http\Controllers\HomeController::class, 'showClient'])
+    ->name('request-client');
 
 Auth::routes();
 
@@ -24,3 +29,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/viewrequest', [App\Http\Controllers\HomeController::class, 'viewRequest'])->name('view-request');
 Route::post('/request-service', [App\Http\Controllers\RequestedServicesController::class, 'store'])->name('requested_services.store');
 Route::get('/submissions', [App\Http\Controllers\HomeController::class, 'viewSubmissions'])->name('requested_services.submissions');
+

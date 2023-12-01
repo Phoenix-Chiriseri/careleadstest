@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CareProviders;
 use Illuminate\Support\Facades\DB; // Add this use statement at the top
+use App\Models\User;
 
 class HomeController extends Controller
 {
@@ -27,6 +28,18 @@ class HomeController extends Controller
     {
         $careProviders = CareProviders::all();
         return view('home')->with("careProviders",$careProviders);
+    }
+
+    public function showClient($id){
+
+        $client = User::findOrFail($id);
+
+    }
+
+    public function welcome()
+    {
+        //$careProviders = CareProviders::all();
+        return view('wecome');
     }
 
     public function viewSubmissions(){
