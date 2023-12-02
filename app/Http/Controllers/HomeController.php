@@ -68,6 +68,8 @@ class HomeController extends Controller
         ->take(3) // Limit to the top three records
         ->get();
 
+        dd($response);
+
         $responses = DB::table('users')
         ->leftJoin('responde_c_lients', 'users.id', '=', 'responde_c_lients.client_id')
         ->leftJoin('care_providers','care_providers.id','=','responde_c_lients.provider_id')
