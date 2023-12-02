@@ -29,4 +29,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/viewrequest', [App\Http\Controllers\HomeController::class, 'viewRequest'])->name('view-request');
 Route::post('/request-service', [App\Http\Controllers\RequestedServicesController::class, 'store'])->name('requested_services.store');
 Route::get('/submissions', [App\Http\Controllers\HomeController::class, 'viewSubmissions'])->name('requested_services.submissions');
+Route::get('/ewsponses', [App\Http\Controllers\HomeController::class, 'viewResponses'])->name('requested_services.responses');
+Route::post('/respond-client', [App\Http\Controllers\HomeController::class, 'respondClient'])->name('respond_client.store');
 

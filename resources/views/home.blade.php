@@ -78,6 +78,7 @@
                         </form>
                         <hr>
                         <a href="{{ route('requested_services.submissions') }}" class="btn btn-info">View Submissions</a>
+                        <a href="{{ route('requested_services.responses') }}" class="btn btn-info">View Responses</a>
                     </div>
                 </div>
             </div>
