@@ -1,7 +1,7 @@
 @extends('layouts.app') <!-- Assuming you have a layout file, adjust as needed -->
 @section('content')
     <div class="container mt-5">
-        <h2>Submissions</h2>
+        <h2>Service Provider Reponses</h2>
         <table class="table table-bordered">
             <thead>
                 <tr>
