@@ -12,6 +12,7 @@
     <div class="alert alert-warning" role="alert">
         <strong>Warning!</strong> Client has already been requested.
     </div>
+    <a href="/" class="btn btn-info">Back</a>
 </div>
 <!-- Bootstrap JS and Popper.js (required for Bootstrap) -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
