@@ -8,7 +8,8 @@
                 <tr>
                     <th>Client Name</th>
                     <th>Provider Name</th>
-                    <th>Service Provider Email</th>         
+                    <th>Service Provider Email</th>  
+                    <th>Created At</th>         
                     <!-- Add more headers as needed -->
                 </tr>
             </thead>
@@ -18,6 +19,7 @@
                         <td>{{ $response->username }}</td>
                         <td>{{ $response->company_name }}</td>
                         <td>{{ $response->email }}</td>
+                        <td>{{ $response->created_at }}</td>
                     </tr>
                 @endforeach
             </tbody>

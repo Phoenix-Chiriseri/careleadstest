@@ -9,6 +9,7 @@
                     <th>Client Name</th>
                     <th>Provider Name</th>
                     <th>Service Provider Email</th>
+                    <th>Created At</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,6 +18,7 @@
                         <td>{{ $response->username }}</td>
                         <td>{{ $response->company_name }}</td>
                         <td>{{ $response->email }}</td>       
+                        <td>{{ $response->created_at }}</td>       
                         <!-- Add more columns as needed -->
                     </tr>
                 @endforeach
