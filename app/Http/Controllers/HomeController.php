@@ -22,11 +22,7 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+
     public function index()
     {
         $careProviders = CareProviders::all();
@@ -41,8 +37,8 @@ class HomeController extends Controller
 
     }
 
+    //respond to the client and pass in the details which includes the client id, the provider id and the username and the email
     public function respondClient(Request $request){
-
        $userId = Auth::user()->id;
        $providerId = $request->input("provider_id");
        $username = $request->input("name"); 
@@ -55,29 +51,36 @@ class HomeController extends Controller
        $respondClient->email = $email;
        $respondClient->save();
        echo "saved";
+       //after the record has ben saved return to the home broute
+       //return route()->redirect('home')->with("message",'success');
     }
 
-    public function viewResponses(){
 
+    //query that will fetch only the three responses from the service provider and display them in a table
+    public function viewResponses(){
+    
         $userId = auth()->user()->id;
         $responses = DB::table('users')
-        ->leftJoin('responde_clients', 'users.id', '=', 'responde_clients.client_id')
-        ->leftJoin('care_providers', 'care_providers.id', '=', 'responde_clients.provider_id')
-        ->select('users.name as username', 'care_providers.company_name', 'responde_clients.*')
+        ->leftJoin('responde_c_lients', 'users.id', '=', 'responde_c_lients.client_id')
+        ->leftJoin('care_providers', 'care_providers.id', '=', 'responde_c_lients.provider_id')
+        ->select('users.name as username', 'care_providers.company_name', 'responde_c_lients.*')
         ->where('users.id', $userId)
         ->take(3) // Limit to the top three records
         ->get();
-
-        dd($response);
-
-        $responses = DB::table('users')
+        
+        //t
+        $responsesCount = DB::table('users')
         ->leftJoin('responde_c_lients', 'users.id', '=', 'responde_c_lients.client_id')
         ->leftJoin('care_providers','care_providers.id','=','responde_c_lients.provider_id')
         ->select('users.name as username','care_providers.company_name','responde_c_lients.*')
         ->where("users.id",$userId)
+        ->take(3)
         ->count();
+        return view("view-responses")->with("responsesCount",$responsesCount)->with("responses",$responses);
+    }
 
-        return view("view-responses")->with("responses",$responses);
+    public function clientResponses(){
+        return view("client-responses");
     }
 
     public function welcome()
@@ -94,12 +97,12 @@ class HomeController extends Controller
         ->select('users.name as username','care_providers.company_name','requested_services.*')
         ->get();
 
-        $submissions = DB::table('users')
+        //these are the number of submissions into the database. joining threee tables to return the submissions into the submissions table
+        $submissionsCount = DB::table('users')
         ->leftJoin('requested_services', 'users.id', '=', 'requested_services.client_id')
         ->leftJoin('care_providers','care_providers.id','=','requested_services.provider_id')
         ->select('users.name as username','care_providers.company_name','requested_services.*')
         ->count();
         return view("view_submission")->with("submissions",$submissions);
-
     }
 }

@@ -1,15 +1,14 @@
 @extends('layouts.app') <!-- Assuming you have a layout file, adjust as needed -->
 @section('content')
+<!--these are the responses from the service provider!-->
     <div class="container mt-5">
         <h2>Submissions</h2>
-        <h3 class = "text-center">Returned Count Of Responses {{$responsesCount}}</h3>
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Client Name</th>
                     <th>Provider Name</th>
-                    <th>Service Provider Email</th>         
-                    <!-- Add more headers as needed -->
+                    <th>Service Provider Email</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,7 +16,8 @@
                     <tr>
                         <td>{{ $response->username }}</td>
                         <td>{{ $response->company_name }}</td>
-                        <td>{{ $response->email }}</td>
+                        <td>{{ $response->email }}</td>       
+                        <!-- Add more columns as needed -->
                     </tr>
                 @endforeach
             </tbody>

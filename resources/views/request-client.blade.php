@@ -1,13 +1,13 @@
 <!-- resources/views/requested_services/create.blade.php -->
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 @extends('layouts.app') <!-- Assuming you have a layout file, adjust as needed -->
-
 @section('content')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Create Requested Service') }}</div>
+                    <div class="card-header">{{ __('Request Client') }}</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('requested_services.store') }}">
                             @csrf
@@ -20,7 +20,6 @@
                                     @endforeach
                                 </select>
                             </div>
-
                             <div class="form-group">
                                 <label for="username">{{ __('Username') }}</label>
                                 <input type="text" name="username" id="username" class="form-control" required>
@@ -36,6 +35,7 @@
                                 <input type="text" name="service_provider" id="service_provider" class="form-control" required>
                             </div>
                             <!-- Add other form fields here based on your table structure -->
+                            <br>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Submit') }}

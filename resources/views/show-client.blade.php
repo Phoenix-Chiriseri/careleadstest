@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Create Requested Service') }}</div>
+                    <div class="card-header">{{ __('Request Client') }}</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('respond_client.store') }}">
                             @csrf
@@ -22,13 +22,14 @@
                             </div>
                             <div class="form-group">
                                 <label for="username">{{ __('Name') }}</label>
-                                <input type="text" name="name" value="{{$client->name}}" id="username" class="form-control" required>
+                                <input type="text" name="name" value="{{$client->name}}" readonly class="form-control" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="email">{{ __('Email') }}</label>
-                                <input type="email" name="email" value="{{$client->email}}" id="email" class="form-control" required>
+                                <input type="email" name="email" value="{{$client->email}}" readonly id="email" class="form-control" required>
                             </div>
+                            <br>
                             <!-- Add other form fields here based on your table structure -->
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary">
