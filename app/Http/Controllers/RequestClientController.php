@@ -33,9 +33,8 @@ class RequestClientController extends Controller
     
         if ($existingRecord) {
             // If a record exists, return a response indicating the duplication
-            return redirect()->back()->with(['message' => 'You have already responded to this client']);
+            return view('record-exists');
         }
-    
         try {
             // Attempt to create a new entry in the database
             $respondClient = new RespondeClient();
@@ -45,13 +44,19 @@ class RequestClientController extends Controller
             $respondClient->email = $email;
             $respondClient->status = 'requested';
             $respondClient->save();
-            return redirect()->back()->with(['message' => 'Responded to client successfully']);
+            return redirect('/');
         } catch (QueryException $e) {
             // Handle other database errors if needed
             // Log the exception for debugging
             \Log::error($e);
-            return redirect()->back()->with(['message' => 'Error Homie']);
+            //return redirect()->back()->with(['message' => 'Error Homie']);
+            return view('record-exists');
         }
+    }
+
+
+    public function recordExists(){
+        return view('record-exists');
     }
 
 

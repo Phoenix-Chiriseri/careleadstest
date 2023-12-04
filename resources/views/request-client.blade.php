@@ -1,8 +1,6 @@
 <!-- resources/views/requested_services/create.blade.php -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 @extends('layouts.app') <!-- Assuming you have a layout file, adjust as needed -->
 @section('content')
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 @if(session()->has('message'))
     <div class="alert alert-info">
         {{ session('message') }}
