@@ -74,8 +74,10 @@ class HomeController extends Controller
         ->leftJoin('care_providers','care_providers.id','=','responde_c_lients.provider_id')
         ->select('users.name as username','care_providers.company_name','responde_c_lients.*')
         ->where("users.id",$userId)
+        ->orderBy('responde_c_lients.created_at', 'desc') 
         ->take(3)
         ->count();
+
         return view("view-responses")->with("responsesCount",$responsesCount)->with("responses",$responses);
     }
 
