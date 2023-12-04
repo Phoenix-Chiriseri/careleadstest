@@ -19,24 +19,40 @@ class RequestClientController extends Controller
         return view("show-client")->with("client",$client)->with("careProviders",$careProviders);
 
     }
-
-    public function respondClient(Request $request){
+    public function respondClient(Request $request)
+    {
         $clientId = $request->input("client_id");
         $providerId = $request->input("provider_id");
-        $username = $request->input("name"); 
-        $email = $request->input("email"); 
-     
-        $respondClient = new RespondeClient();
-        $respondClient->client_id = $clientId;
-        $respondClient->provider_id = $providerId;
-        $respondClient->username = $username;
-        $respondClient->email = $email;
-        $respondClient->save();
-        echo "responded";
-        //return view("home");
-        //after the record has ben saved return to the home broute
-        //return route()->redirect('home')->with("message",'success');
-     }
+        $username = $request->input("name");
+        $email = $request->input("email");
+    
+        // Check if a record with the same client_id and provider_id already exists
+        $existingRecord = RespondeClient::where('client_id', $clientId)
+            ->where('provider_id', $providerId)
+            ->first();
+    
+        if ($existingRecord) {
+            // If a record exists, return a response indicating the duplication
+            return redirect()->back()->with(['message' => 'You have already responded to this client']);
+        }
+    
+        try {
+            // Attempt to create a new entry in the database
+            $respondClient = new RespondeClient();
+            $respondClient->client_id = $clientId;
+            $respondClient->provider_id = $providerId;
+            $respondClient->username = $username;
+            $respondClient->email = $email;
+            $respondClient->status = 'requested';
+            $respondClient->save();
+            return redirect()->back()->with(['message' => 'Responded to client successfully']);
+        } catch (QueryException $e) {
+            // Handle other database errors if needed
+            // Log the exception for debugging
+            \Log::error($e);
+            return redirect()->back()->with(['message' => 'Error Homie']);
+        }
+    }
 
 
      public function viewResponses(){

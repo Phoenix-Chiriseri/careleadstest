@@ -17,8 +17,10 @@ return new class extends Migration
             $table->unsignedBigInteger('provider_id'); // Foreign key column
             $table->string('username');
             $table->string('email');
+            $table->string('status');
             $table->foreign('client_id')->references('id')->on('users');
             $table->foreign('provider_id')->references('id')->on('care_providers');
+            $table->unique(['client_id', 'provider_id']);
             $table->timestamps();
         });
     }

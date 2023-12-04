@@ -3,6 +3,11 @@
 @extends('layouts.app') <!-- Assuming you have a layout file, adjust as needed -->
 @section('content')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+@if(session()->has('message'))
+    <div class="alert alert-info">
+        {{ session('message') }}
+    </div>
+ @endif
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
