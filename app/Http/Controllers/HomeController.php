@@ -79,10 +79,12 @@ class HomeController extends Controller
 
     public function viewSubmissions(){
         //join the three tables and show the information
+        $userId = Auth::user()->id;
         $submissions = DB::table('users')
         ->leftJoin('requested_services', 'users.id', '=', 'requested_services.client_id')
         ->leftJoin('care_providers','care_providers.id','=','requested_services.provider_id')
         ->select('users.name as username','care_providers.company_name','requested_services.*')
+        ->where('users.id',$userId)
         ->get();
 
         //these are the number of submissions into the database. joining threee tables to return the submissions into the submissions table
@@ -90,7 +92,8 @@ class HomeController extends Controller
         ->leftJoin('requested_services', 'users.id', '=', 'requested_services.client_id')
         ->leftJoin('care_providers','care_providers.id','=','requested_services.provider_id')
         ->select('users.name as username','care_providers.company_name','requested_services.*')
+        ->where('users.id',$userId)
         ->count();
-        return view("view_submission")->with("submissions",$submissions);
+        return view("view_submission")->with("submissions",$submissions)->with("submissionCount",$submissionsCount);
     }
 }

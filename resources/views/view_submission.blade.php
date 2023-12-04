@@ -4,6 +4,7 @@
 @section('content')
     <div class="container mt-5">
         <h2>Submissions</h2>
+        Number Of Submission {{$submissionCount}}
         <table class="table table-bordered">
             <thead>
                 <tr>
@@ -14,9 +15,7 @@
                     <th>User Contact</th>
                     <th>Service Options</th>
                     <th>Ref Number</th>
-                    <th>City</th>
-                   
-                   
+                    <th>City</th>   
                     <!-- Add more headers as needed -->
                 </tr>
             </thead>
