@@ -22,5 +22,5 @@ Route::post('/request-service', [App\Http\Controllers\RequestedServicesControlle
 Route::get('/submissions', [App\Http\Controllers\HomeController::class, 'viewSubmissions'])->name('requested_services.submissions');
 Route::get('/ewsponses', [App\Http\Controllers\HomeController::class, 'viewResponses'])->name('requested_services.responses');
 Route::post('/respond-client', [App\Http\Controllers\RequestClientController::class, 'respondClient'])->name('respond_client.store');
-Route::get('/client-responses', [App\Http\Controllers\HomeController::class, 'viewResponses'])->name('requested_services.client-responses');
+Route::get('/client-responses', [App\Http\Controllers\RequestClientController::class, 'viewResponses'])->name('requested_services.client-responses');
 

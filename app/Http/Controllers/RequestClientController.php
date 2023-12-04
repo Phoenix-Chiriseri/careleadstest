@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\CareProviders;
 use App\Models\RespondeClient;
 use Auth;
+use Illuminate\Support\Facades\DB;
 
 class RequestClientController extends Controller
 {
@@ -36,6 +37,20 @@ class RequestClientController extends Controller
         //after the record has ben saved return to the home broute
         //return route()->redirect('home')->with("message",'success');
      }
+
+
+     public function viewResponses(){
+    
+        $userId = auth()->user()->id;
+        $responses = DB::table('users')
+        ->leftJoin('responde_c_lients', 'users.id', '=', 'responde_c_lients.client_id')
+        ->leftJoin('care_providers', 'care_providers.id', '=', 'responde_c_lients.provider_id')
+        ->select('users.name as username', 'care_providers.company_name', 'responde_c_lients.*')
+        ->where('users.id', $userId)
+        ->take(3) // Limit to the top three records
+        ->get();
+        return view("view-responses")->with("responses",$responses);
+    }
  
 
 }
