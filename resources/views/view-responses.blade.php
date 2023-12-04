@@ -9,7 +9,7 @@
                     <th>Client Name</th>
                     <th>Provider Name</th>
                     <th>Service Provider Email</th>  
-                    <th>Created At</th>         
+                    <th>Responded At</th>         
                     <!-- Add more headers as needed -->
                 </tr>
             </thead>
