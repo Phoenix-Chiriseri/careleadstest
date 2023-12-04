@@ -53,7 +53,6 @@
             @endif
         </div>
         <div class = "container">
-
             <div class="dt-responsive table-responsive">
                 <table id="autofill" class="table table-striped table-bordered nowrap">
                   <thead>

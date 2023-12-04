@@ -7,17 +7,17 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Create Requested Service') }}</div>
+                    <div class="card-header">{{ __('Request Service') }}</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('requested_services.store') }}">
                             @csrf
                             <div class="form-group">
                                 <label for="username">{{ __('Username') }}</label>
-                                <input type="text" name="username" id="username" class="form-control">
+                                <input type="text" name="username" id="username" value="{{$authUser->name }}" class="form-control" readonly>
                             </div>
                             <div class="form-group">
                                 <label for="email">{{ __('Email') }}</label>
-                                <input type="email" name="email" id="email" class="form-control">
+                                <input type="email" name="email" id="email" class="form-control" value="{{$authUser->email}}" >
                             </div>
 
                             <div class="form-group">
@@ -30,7 +30,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="services_provided">{{ __('Services Provided') }}</label>
+                                <label for="services_provided">{{ __('Services You Want') }}</label>
                                 <input type="text" name="services_provided" id="services_provided" class="form-control">
                             </div>
 

@@ -25,8 +25,10 @@ class HomeController extends Controller
 
     public function index()
     {
+        //$user = Auth::user();
         $careProviders = CareProviders::all();
-        return view('home')->with("careProviders",$careProviders);
+        $authUser = Auth::user();
+        return view('home')->with("careProviders",$careProviders)->with("authUser",$authUser);
     }
 
    /* public function showClient($id){
@@ -38,24 +40,7 @@ class HomeController extends Controller
     }*/
 
     //respond to the client and pass in the details which includes the client id, the provider id and the username and the email
-    public function respondClient(Request $request){
-       
-       $userId = Auth::user()->id;
-       $providerId = $request->input("provider_id");
-       $username = $request->input("name"); 
-       $email = $request->input("email"); 
-    
-       $respondClient = new RespondeClient();
-       $respondClient->client_id = $userId;
-       $respondClient->provider_id = $providerId;
-       $respondClient->username = $username;
-       $respondClient->email = $email;
-       $respondClient->save();
-       echo "saved";
-       //after the record has ben saved return to the home broute
-       //return route()->redirect('home')->with("message",'success');
-    }
-
+   
 
     //query that will fetch only the three responses from the service provider and display them in a table
     public function viewResponses(){

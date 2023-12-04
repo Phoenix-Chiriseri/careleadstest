@@ -24,11 +24,12 @@
                                 <label for="username">{{ __('Name') }}</label>
                                 <input type="text" name="name" value="{{$client->name}}" readonly class="form-control" required>
                             </div>
-
+                            <input type="hidden" name="client_id" value="{{ $client->id }}">
                             <div class="form-group">
                                 <label for="email">{{ __('Email') }}</label>
                                 <input type="email" name="email" value="{{$client->email}}" readonly id="email" class="form-control" required>
                             </div>
+                           
                             <br>
                             <!-- Add other form fields here based on your table structure -->
                             <div class="form-group">
