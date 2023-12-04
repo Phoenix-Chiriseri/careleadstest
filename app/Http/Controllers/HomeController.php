@@ -29,16 +29,17 @@ class HomeController extends Controller
         return view('home')->with("careProviders",$careProviders);
     }
 
-    public function showClient($id){
+   /* public function showClient($id){
 
         $client = User::findOrFail($id);
         $careProviders = CareProviders::all();
         return view("show-client")->with("client",$client)->with("careProviders",$careProviders);
 
-    }
+    }*/
 
     //respond to the client and pass in the details which includes the client id, the provider id and the username and the email
     public function respondClient(Request $request){
+       
        $userId = Auth::user()->id;
        $providerId = $request->input("provider_id");
        $username = $request->input("name"); 

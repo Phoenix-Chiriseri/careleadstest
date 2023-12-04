@@ -3,24 +3,15 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RequestedServicesController;
 use App\Models\User;
+use App\Http\Controllers\RequesteClientController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 Route::get('/', function () {
     // Return all the users to the blade file
     $users = User::all();
     return view("welcome")->with("users", $users);
 });
 
-Route::get('/request-client/{clientId}', [App\Http\Controllers\HomeController::class, 'showClient'])
+Route::get('/request-client/{clientId}', [App\Http\Controllers\RequestClientController::class, 'showClient'])
     ->name('request-client');
 
 Auth::routes();

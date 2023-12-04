@@ -7,12 +7,12 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Request Client') }}</div>
+                    <div class="card-header">{{ __('Choose Your Service Provider Name') }}</div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('respond_client.store') }}">
                             @csrf
                             <div class="form-group">
-                                <label for="client_id">{{ __('Client') }}</label>
+                                <label for="client_id">{{ __('Service Provider Name') }}</label>
                                 <select name="provider_id" id="provider_id" class="form-control">
                                     <!-- Populate the options with user data -->
                                     @foreach($careProviders as $provider)

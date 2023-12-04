@@ -12,7 +12,7 @@
                         <form method="POST" action="{{ route('requested_services.store') }}">
                             @csrf
                             <div class="form-group">
-                                <label for="client_id">{{ __('Client') }}</label>
+                                <label for="client_id">{{ __('Service Provider Name') }}</label>
                                 <select name="client_id" id="client_id" class="form-control">
                                     <!-- Populate the options with user data -->
                                     @foreach($users as $user)
