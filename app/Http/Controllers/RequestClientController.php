@@ -19,6 +19,8 @@ class RequestClientController extends Controller
         return view("show-client")->with("client",$client)->with("careProviders",$careProviders);
 
     }
+
+    //this is the function that the service provider will respond the client to.......
     public function respondClient(Request $request)
     {
         $clientId = $request->input("client_id");
